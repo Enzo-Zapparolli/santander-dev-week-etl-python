@@ -2,7 +2,7 @@
 
 Projeto prático de portfólio desenvolvido para demonstrar o fluxo **ETL**: Extração, Transformação e Carregamento.
 
-A proposta original usava a API pública da Santander Dev Week. Como APIs públicas podem ficar indisponíveis, este projeto usa uma alternativa robusta: um arquivo CSV completo com dados fictícios de usuários.
+A proposta original usava a API pública da Santander Dev Week. Como APIs públicas podem ficar indisponíveis, este projeto foi realizado com um arquivo CSV completo com dados fictícios de usuários.
 
 ## Objetivo
 
@@ -76,4 +76,5 @@ Em um cenário real, essa etapa poderia ser integrada a uma API de IA generativa
 
 ## Autor
 
-Projeto criado para fins educacionais e composição de portfólio.
+Enzo Zapparolli
+Linkedin: https://www.linkedin.com/in/enzo-zapparolli-5b4420348/
