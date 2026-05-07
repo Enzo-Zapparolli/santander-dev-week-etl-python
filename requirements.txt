@@ -1,0 +1,2 @@
+# Este projeto usa apenas bibliotecas padrão do Python.
+# Recomendado: Python 3.10+
