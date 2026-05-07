@@ -19,7 +19,7 @@ santander-dev-week-etl-portfolio/
 ├── data/
 │   └── users.csv
 ├── output/
-│   └── users_with_messages.csv
+│   └── .gitkeep
 ├── src/
 │   └── main.py
 ├── .gitignore
@@ -58,6 +58,16 @@ output/users_with_messages.json
 id,nome,conta,cartao,mensagem
 1,Ana Souza,0001-9,**** **** **** 1234,Ana Souza, organize sua vida financeira...
 ```
+## Sobre a transformação
+
+A etapa de transformação simula a geração de uma mensagem de educação financeira para cada usuário.  
+Em um cenário real, essa etapa poderia ser integrada a uma API de IA generativa.
+
+## Decisões do projeto
+
+Durante o desenvolvimento, optei por substituir a API  do projeto base por um arquivo CSV local, pois a API pública da Santander Dev Week pode estar indisponível. Com isso, consegui manter o foco principal do desafio: demonstrar o fluxo ETL completo.
+
+Também separei o código em funções específicas para cada etapa do processo, facilitando a leitura, manutenção e futuras melhorias.
 
 ## Conceitos aplicados
 
@@ -69,10 +79,7 @@ id,nome,conta,cartao,mensagem
 - Organização de projeto para GitHub
 - Boas práticas de documentação
 
-## Sobre a transformação
 
-A etapa de transformação simula a geração de uma mensagem de educação financeira para cada usuário.  
-Em um cenário real, essa etapa poderia ser integrada a uma API de IA generativa.
 
 ## Autor
 
