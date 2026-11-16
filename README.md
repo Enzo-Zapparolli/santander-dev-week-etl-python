@@ -1,87 +1,60 @@
-# Santander Dev Week 2023 - Pipeline ETL com Python
+# Pipeline ETL com Python
 
-Projeto prático de portfólio desenvolvido para demonstrar o fluxo **ETL**: Extração, Transformação e Carregamento.
+**Projeto educacional inspirado na Santander Dev Week 2023 (DIO).** Extração de CSV, transformação de registros e exportação em CSV/JSON, usando somente a biblioteca padrão do Python.
 
-A proposta original usava a API pública da Santander Dev Week. Como APIs públicas podem ficar indisponíveis, este projeto foi realizado com um arquivo CSV completo com dados fictícios de usuários.
+[Portfólio](https://github.com/Enzo-Zapparolli) · [Código](src/main.py) · [Base fictícia](data/users.csv)
 
-## Objetivo
+## Fluxo
 
-Criar um pipeline em Python que:
-
-1. **Extrai** dados de usuários de um arquivo CSV.
-2. **Transforma** esses dados, gerando uma mensagem personalizada para cada cliente.
-3. **Carrega** o resultado final em novos arquivos de saída.
-
-## Estrutura do projeto
-
-```text
-santander-dev-week-etl-portfolio/
-├── data/
-│   └── users.csv
-├── output/
-│   └── .gitkeep
-├── src/
-│   └── main.py
-├── .gitignore
-├── requirements.txt
-└── README.md
+```mermaid
+flowchart LR
+    A[CSV de usuários fictícios] --> B[Extração e validação de colunas]
+    B --> C[Mensagem personalizada por nome]
+    C --> D[CSV enriquecido]
+    C --> E[JSON enriquecido]
 ```
 
-## Dados de entrada
+A transformação utiliza um texto fixo personalizado pelo nome. Não há integração com IA generativa, API bancária ou envio de mensagens a pessoas.
 
-O arquivo `data/users.csv` contém dados fictícios:
+## Executar
 
-```csv
-id,nome,conta,cartao
-1,Ana Souza,0001-9,**** **** **** 1234
-2,Carlos Lima,0002-7,**** **** **** 5678
-```
-
-## Como executar
-
-Clone o repositório, acesse a pasta do projeto e execute:
+Com Python 3.10 ou superior:
 
 ```bash
+git clone https://github.com/Enzo-Zapparolli/santander-dev-week-etl-python.git
+cd santander-dev-week-etl-python
 python src/main.py
 ```
 
-O resultado será salvo em:
+Não é necessário instalar pacotes externos. As saídas são gravadas em `output/users_with_messages.csv` e `output/users_with_messages.json`. Uma nova execução substitui as saídas anteriores.
 
-```text
-output/users_with_messages.csv
-output/users_with_messages.json
+## Entrada e saída
+
+A entrada exige as colunas `id`, `nome`, `conta` e `cartao`. O conjunto incluído contém cinco registros fictícios. A transformação acrescenta a coluna `mensagem`, preservando os demais campos.
+
+Exemplo de registro de saída em JSON:
+
+```json
+{
+  "id": "1",
+  "nome": "Ana Souza",
+  "conta": "0001-9",
+  "cartao": "**** **** **** 1234",
+  "mensagem": "Ana Souza, acompanhe seus gastos, defina metas mensais e use seu cartão com consciência para fortalecer sua saúde financeira."
+}
 ```
 
-## Exemplo de saída
+## Organização
 
-```csv
-id,nome,conta,cartao,mensagem
-1,Ana Souza,0001-9,**** **** **** 1234,Ana Souza, organize sua vida financeira...
-```
-## Sobre a transformação
+| Caminho | Responsabilidade |
+| --- | --- |
+| `data/users.csv` | Entrada fictícia |
+| `src/main.py` | Funções de extração, transformação e carga |
+| `output/` | Resultados gerados localmente |
+| `requirements.txt` | Registra que não há dependências externas |
 
-A etapa de transformação simula a geração de uma mensagem de educação financeira para cada usuário.  
-Em um cenário real, essa etapa poderia ser integrada a uma API de IA generativa.
+## Decisões e limites
 
-## Decisões do projeto
+O CSV local permite reproduzir o fluxo sem depender da API do desafio original. O código verifica a existência do arquivo e das colunas obrigatórias. Não há orquestração, carga incremental ou validação completa dos valores; o objetivo é demonstrar um ETL local simples.
 
-Durante o desenvolvimento, optei por substituir a API  do projeto base por um arquivo CSV local, pois a API pública da Santander Dev Week pode estar indisponível. Com isso, consegui manter o foco principal do desafio: demonstrar o fluxo ETL completo.
-
-Também separei o código em funções específicas para cada etapa do processo, facilitando a leitura, manutenção e futuras melhorias.
-
-## Conceitos aplicados
-
-- Python
-- ETL
-- Leitura e escrita de CSV
-- Manipulação de dados
-- Geração de mensagens personalizadas
-- Organização de projeto para GitHub
-- Boas práticas de documentação
-
-
-
-## Autor
-
-Enzo Zapparolli
-Linkedin: https://www.linkedin.com/in/enzo-zapparolli-5b4420348/
+**Autor:** Enzo Zapparolli · [LinkedIn](https://www.linkedin.com/in/enzo-zapparolli-5b4420348/).
